@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name="budget")
 public class Budget implements Comparable<Budget>{
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull

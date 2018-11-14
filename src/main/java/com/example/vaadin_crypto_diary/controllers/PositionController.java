@@ -41,11 +41,8 @@ public class PositionController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Position> getPositions(@RequestBody Position position){
+    public List<Position> getPositions(){
         return positionDao.findAll();
     }
-
-
-
 
 }

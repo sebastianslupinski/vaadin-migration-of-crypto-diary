@@ -30,6 +30,6 @@ public class BudgetController {
     public List<Budget> getBudgets(){
         return budgetDao.findAll();
     }
-    
+
 
 }

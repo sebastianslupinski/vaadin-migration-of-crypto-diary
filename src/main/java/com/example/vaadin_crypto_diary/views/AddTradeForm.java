@@ -10,5 +10,5 @@ public class AddTradeForm extends FormLayout{
     private TextField buyPrice = new TextField("Amount of BTC paid");
     private Button save = new Button("Save");
     private Button delete = new Button("Delete");
-    
+
 }

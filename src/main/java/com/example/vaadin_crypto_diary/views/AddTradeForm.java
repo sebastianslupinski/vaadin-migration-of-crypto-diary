@@ -10,7 +10,7 @@ import com.vaadin.flow.data.binder.Binder;
 
 public class AddTradeForm extends FormLayout{
 
-    private TextField coinName = new TextField("Coin name");
+    private TextField name = new TextField("Coin name");
     private TextField buyPrice = new TextField("Amount of BTC paid");
     private Button save = new Button("Save");
     private Button delete = new Button("Delete");
@@ -26,7 +26,7 @@ public class AddTradeForm extends FormLayout{
         this.positionView = positionView;
 
         buttons.add(save,delete);
-        add(coinName,buyPrice,buttons);
+        add(name,buyPrice,buttons);
 
         binder.forField(buyPrice)
                 .withConverter(Double::valueOf, String::valueOf)
@@ -48,7 +48,7 @@ public class AddTradeForm extends FormLayout{
         save.setEnabled(enabled);
         delete.setEnabled(enabled);
         if (enabled) {
-            coinName.focus();
+            name.focus();
         }
     }
 

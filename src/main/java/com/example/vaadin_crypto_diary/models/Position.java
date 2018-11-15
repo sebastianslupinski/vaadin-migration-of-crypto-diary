@@ -85,7 +85,7 @@ public class Position {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -101,7 +101,7 @@ public class Position {
     }
 
     public double getSellPrice() {
-        return sellPrice;
+        return this.sellPrice;
     }
 
     public void setSellPrice(double sellPrice) {

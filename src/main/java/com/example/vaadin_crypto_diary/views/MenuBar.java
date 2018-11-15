@@ -9,7 +9,8 @@ public class MenuBar extends VerticalLayout implements RouterLayout {
     private HorizontalLayout menuBar = new HorizontalLayout();
 
     private RouterLink welcomePage = new RouterLink("Welcome", WelcomeView.class);
-    private RouterLink addTradePage = new RouterLink("Products", PositionView.class);
+    private RouterLink addTradePage = new RouterLink("Trades", PositionView.class);
+
 
     public MenuBar() {
         menuBar.add(welcomePage, addTradePage);

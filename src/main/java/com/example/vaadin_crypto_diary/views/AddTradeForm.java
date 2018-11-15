@@ -26,7 +26,7 @@ public class AddTradeForm extends FormLayout{
         this.positionView = positionView;
 
         buttons.add(save,delete);
-        add(coinName,buyPrice);
+        add(coinName,buyPrice,buttons);
 
         binder.forField(buyPrice)
                 .withConverter(Double::valueOf, String::valueOf)

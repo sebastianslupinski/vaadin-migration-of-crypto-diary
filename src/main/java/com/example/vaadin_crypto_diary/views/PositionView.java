@@ -21,7 +21,7 @@ public class PositionView extends VerticalLayout{
 
     public PositionView() {
         tradesGrid.setSizeFull();
-        tradesGrid.setWidth("100%");
+        tradesGrid.setWidth("400px");
         mainLayout.add(tradesGrid, addTradeForm);
         mainLayout.setAlignItems(Alignment.START);
 
@@ -30,11 +30,12 @@ public class PositionView extends VerticalLayout{
 
         tradesGrid.addColumn(Position::getName).setSortable(true).setHeader("Coin name");
         tradesGrid.addColumn(Position::getOpenDate).setSortable(true).setHeader("Open Date");
-        tradesGrid.addColumn(Position::getBuyPrice).setSortable(true).setHeader("BTC Given");
-        tradesGrid.addColumn(Position::getSellPrice).setSortable(true).setHeader("BTC Received");
+        tradesGrid.addColumn(Position::getBuyPrice).setSortable(true).setHeader("BTC Paid");
+        tradesGrid.addColumn(Position::getSellPrice).setSortable(true).setHeader("BTC Received").setKey("received");
         tradesGrid.addColumn(Position::getCloseDate).setSortable(true).setHeader("Close Date");
         tradesGrid.addColumn(Position::getPercent).setSortable(true).setHeader("Percent done");
 
+        tradesGrid.getColumnByKey("received").setWidth("110px");
         updateList();
 
         addTradeButton.addClickListener(e -> {

@@ -52,5 +52,4 @@ public class PositionView extends VerticalLayout{
         tradesGrid.setItems(positionController.getPositions());
     }
 
-
 }

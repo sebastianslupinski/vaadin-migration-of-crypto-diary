@@ -63,5 +63,4 @@ public class AddTradeForm extends FormLayout{
         positionView.updateList();
         setPosition(null);
     }
-
 }

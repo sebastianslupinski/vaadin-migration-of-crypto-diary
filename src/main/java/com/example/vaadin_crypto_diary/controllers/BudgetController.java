@@ -2,6 +2,9 @@ package com.example.vaadin_crypto_diary.controllers;
 
 import com.example.vaadin_crypto_diary.dao.BudgetDao;
 import com.example.vaadin_crypto_diary.models.Budget;
+import com.example.vaadin_crypto_diary.models.BudgetChange;
+import com.example.vaadin_crypto_diary.models.Statistics;
+import com.vaadin.flow.shared.Registration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +17,16 @@ import java.util.List;
 @RestController
 public class BudgetController {
 
-    private BudgetDao budgetDao;
+    private static BudgetDao budgetDao;
+    private static BudgetController instance;
+
+    //singleton
+    public static synchronized BudgetController getInstance() {
+        if(instance == null) {
+            instance = new BudgetController(budgetDao);
+        }
+        return instance;
+    }
 
     @Autowired
     public BudgetController(BudgetDao budgetDao){
@@ -22,7 +34,7 @@ public class BudgetController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void addBudget(@RequestBody Budget budget){
+    public void saveBudget(@RequestBody Budget budget){
         budgetDao.save(budget);
     }
 
@@ -31,5 +43,17 @@ public class BudgetController {
         return budgetDao.findAll();
     }
 
+    public void addBudget(BudgetChange change) {
 
+        Statistics latestStatistics = new Statistics(budgetDao.findAll());
+        Budget latestBudget = latestStatistics.findNewestBudget();
+
+        Budget newBudget = new Budget(latestBudget.getFrozenBtc(), latestBudget.getFreeBtc());
+        newBudget.addBudget(change.getAmountChange());
+        budgetDao.save(newBudget);
+    }
+
+    public Statistics getLatestStatistics() {
+        return new Statistics(budgetDao.findAll());
+    }
 }

@@ -21,7 +21,7 @@ public class PositionView extends VerticalLayout{
 
     public PositionView() {
         tradesGrid.setSizeFull();
-        tradesGrid.setWidth("400px");
+        tradesGrid.setWidth("430px");
         mainLayout.add(tradesGrid, addTradeForm);
         mainLayout.setAlignItems(Alignment.START);
 
@@ -35,7 +35,7 @@ public class PositionView extends VerticalLayout{
         tradesGrid.addColumn(Position::getCloseDate).setSortable(true).setHeader("Close Date");
         tradesGrid.addColumn(Position::getPercent).setSortable(true).setHeader("Percent done");
 
-        tradesGrid.getColumnByKey("received").setWidth("110px");
+        tradesGrid.getColumnByKey("received").setWidth("120px");
         updateList();
 
         addTradeButton.addClickListener(e -> {

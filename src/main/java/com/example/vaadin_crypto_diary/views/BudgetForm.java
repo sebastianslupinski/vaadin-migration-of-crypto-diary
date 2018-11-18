@@ -21,7 +21,6 @@ public class BudgetForm extends FormLayout {
     private Button withdraw = new Button("Withdraw btc");
     private Binder<BudgetChange> binder = new Binder<>(BudgetChange.class);
 
-
     private BudgetController budgetController = BudgetController.getInstance();
 
     private BudgetChange budgetChange;
@@ -46,6 +45,10 @@ public class BudgetForm extends FormLayout {
             UI.getCurrent().getPage().reload();
         });
 
+        withdraw.addClickListener(e -> {
+            this.withdrawBudget();
+            UI.getCurrent().getPage().reload();
+        });
 
     }
 
@@ -67,5 +70,7 @@ public class BudgetForm extends FormLayout {
 
     private void withdrawBudget() {
         budgetController.withdrawBudget(budgetChange);
+        statisticsView.updateValues();
+        setBtcChange(null);
     }
 }

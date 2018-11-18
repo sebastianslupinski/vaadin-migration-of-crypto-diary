@@ -49,6 +49,8 @@ public class BudgetController {
         Budget latestBudget = latestStatistics.findNewestBudget();
 
         Budget newBudget = new Budget(latestBudget.getFrozenBtc(), latestBudget.getFreeBtc());
+        System.out.println(change.getAmountChange());
+        System.out.println(newBudget);
         newBudget.addBudget(change.getAmountChange());
         budgetDao.save(newBudget);
     }

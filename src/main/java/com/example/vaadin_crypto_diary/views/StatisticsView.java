@@ -39,21 +39,21 @@ public class StatisticsView extends VerticalLayout {
 
     BudgetForm budgetForm = new BudgetForm(this);
 
-    HorizontalLayout mainLayout = new HorizontalLayout();
+    VerticalLayout mainLayout = new VerticalLayout();
 
     public StatisticsView(){
 
-        mainLayout.add(generalBudget,freeBtc,frozenBtc,averagePercent,prediction30,prediction90, prediction180, prediction360, budgetForm);
+        budgetForm.setBtcChange(new BudgetChange());
+        mainLayout.add(budgetForm, generalBudget,freeBtc,frozenBtc,averagePercent,prediction30,prediction90, prediction180, prediction360);
         mainLayout.setAlignItems(Alignment.START);
 
-        add(mainLayout, addButton);
+        add(mainLayout);
 
         updateValues();
 
-        addButton.addClickListener(e -> {
-            budgetForm.setBtcChange(new BudgetChange());
-        });
-
+//        addButton.addClickListener(e -> {
+//            budgetForm.setBtcChange(new BudgetChange());
+//        });
     }
 
     public void updateValues(){

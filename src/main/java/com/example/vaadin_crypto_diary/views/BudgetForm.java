@@ -45,6 +45,8 @@ public class BudgetForm extends FormLayout {
             this.addBudget();
             UI.getCurrent().getPage().reload();
         });
+
+
     }
 
     public void setBtcChange(BudgetChange change){
@@ -63,7 +65,7 @@ public class BudgetForm extends FormLayout {
         setBtcChange(null);
     }
 
-//    private void withdrawBudget() {
-//        budgetController.withdrawBudget(amountOfBtc.addValueChangeListener(e -> e.getValue()));
-//    }
+    private void withdrawBudget() {
+        budgetController.withdrawBudget(budgetChange);
+    }
 }

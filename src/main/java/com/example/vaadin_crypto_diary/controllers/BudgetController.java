@@ -58,4 +58,16 @@ public class BudgetController {
     public Statistics getLatestStatistics() {
         return new Statistics(budgetDao.findAll());
     }
+
+    public void withdrawBudget(BudgetChange budgetChange) {
+
+        Statistics latestStatistics = new Statistics(budgetDao.findAll());
+        Budget latestBudget = latestStatistics.findNewestBudget();
+
+        Budget newBudget = new Budget(latestBudget.getFrozenBtc(), latestBudget.getFreeBtc());
+        newBudget.decreaseBudget(budgetChange.getAmountChange());
+
+        budgetDao.save(newBudget);
+
+    }
 }
